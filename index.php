@@ -61,20 +61,21 @@ session_start();
 	}
 	echo '</center>';
 
+		
+	if(isset($_SESSION['obj1'])){
+	
 		$wObj1 = new Asp();
-		if(isset($_SESSION['obj1'])){
-			$wObj1->setAsp($_SESSION['obj1']);
-		}
+		$wObj1->setAsp($_SESSION['obj1']);
+	
 		echo 'Auswahl Springer 1: '; echo $wObj1->getAsp();
 		echo '<br />';
 		echo $wObj1->setOptions();
 		
 		$w = "";
-
 		$sammlung = array();
-		if(isset($_SESSION['obj1'])){
-			array_push($sammlung, $_SESSION['obj1']);
-		}
+		
+		array_push($sammlung, $_SESSION['obj1']);
+	
 		echo 'Bewegungsmoeglichkeiten: ';
 
 		echo $w = $wObj1->getOption1();
@@ -100,54 +101,61 @@ session_start();
 
 		echo $w = $wObj1->getOption8();
 		array_push($sammlung, $w);
-
-		echo '<br />';
+	}
+	echo '<br />';
+	
+	if(isset($_SESSION['obj2'])){
+		
 		$wObj2 = new Asp();
-		if(isset($_SESSION['obj2'])){
-			$wObj2->setAsp($_SESSION['obj2']);
-		}
+		$wObj2->setAsp($_SESSION['obj2']);
+	
 		echo 'Auswahl Springer 2: '; echo $wObj2->getAsp();
 		echo '<br />';
 		echo $wObj2->setOptions();
+		
+		$w = "";
+		$sammlung2 = array();
 
-
-		if(isset($_SESSION['obj2'])){
-			array_push($sammlung, $_SESSION['obj2']);
-		}
+		array_push($sammlung2, $_SESSION['obj2']);
+		
 		echo 'Bewegungsmoeglichkeiten: ';
 		echo $w = $wObj2->getOption1();
-		array_push($sammlung, $w); echo '&nbsp; ';
+		array_push($sammlung2, $w); echo '&nbsp; ';
 
 		echo $w = $wObj2->getOption2();
-		array_push($sammlung, $w); echo '&nbsp; ';
+		array_push($sammlung2, $w); echo '&nbsp; ';
 
 		echo $w = $wObj2->getOption3();
-		array_push($sammlung, $w); echo '&nbsp; ';
+		array_push($sammlung2, $w); echo '&nbsp; ';
 
 		echo $w = $wObj2->getOption4();
-		array_push($sammlung, $w); echo '&nbsp; ';
+		array_push($sammlung2, $w); echo '&nbsp; ';
 	
 		echo $w = $wObj2->getOption5();
-		array_push($sammlung, $w); echo '&nbsp; ';
+		array_push($sammlung2, $w); echo '&nbsp; ';
 
 		echo $w = $wObj2->getOption6();
-		array_push($sammlung, $w); echo '&nbsp; ';
+		array_push($sammlung2, $w); echo '&nbsp; ';
 
 		echo $w = $wObj2->getOption7();
-		array_push($sammlung, $w); echo '&nbsp; ';
+		array_push($sammlung2, $w); echo '&nbsp; ';
 
 		echo $w = $wObj2->getOption8();
-		array_push($sammlung, $w);
+		array_push($sammlung2, $w);
+	
+	}
+	echo '<br />';
 		
-		
-		echo '<br />';
-		$neuSammlung1 = array_unique($sammlung);
-		$ergSammlung = array_diff_assoc($sammlung, $neuSammlung1);
+	if(isset($sammlung) && isset($sammlung)){
+		$ergebnis = array_merge($sammlung, $sammlung2);
+		$neuSammlung1 = array_unique($ergebnis);
+		$ergSammlung = array_diff_assoc($ergebnis, $neuSammlung1);
 		echo '<br />';
 		echo 'Gegenseitige Bedrohungstellen: ';
 		foreach($ergSammlung as $val){
 			echo '<span style="color: red;" >'.$val.'</span> ';
 		}
+	}
 	?>
 </body>
 </html>
