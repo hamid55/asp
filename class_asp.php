@@ -47,7 +47,7 @@ class Asp{
 	}
 			
 	public function setOptions(){
-		//Hier ausrechnen	$retval = $this->read();
+		//Hier ausrechnen
 		$this->opt1 = $this->getFirstChar() + 1;
 		$this->opt2 = $this->getFirstChar() - 1 ;
 		$this->opt3 = $this->getFirstChar() + 2;
@@ -57,7 +57,7 @@ class Asp{
 		$this->opt7 = $this->getSecChar() + 2;
 		$this->opt8 = $this->getSecChar() - 2;	
 
-		// Die Optionen ueberschreiben
+		//Die Optionen ueberschreiben
 		$this->opt1 = $this->imBrett($this->opt1);
 		$this->opt2 = $this->imBrett($this->opt2);
 		$this->opt3 = $this->imBrett($this->opt3);
