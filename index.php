@@ -1,4 +1,5 @@
 ﻿<?php
+// index.php  Bewegungsmoeglichkeiten beider Springer und die Gefahrstellen herausfinden.
 include_once('autoloading.php');
 session_start();
 ?>
@@ -146,7 +147,7 @@ session_start();
 	}
 	echo '<br />';
 		
-	if(isset($sammlung) && isset($sammlung)){
+	if(isset($sammlung) && isset($sammlung2)){
 		$ergebnis = array_merge($sammlung, $sammlung2);
 		$neuSammlung1 = array_unique($ergebnis);
 		$ergSammlung = array_diff_assoc($ergebnis, $neuSammlung1);
